@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Servitor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #f4f1eb;
+        --teal: #1a6b8a;
+        --teal-dark: #0f4a63;
+        --teal-light: #2889ab;
+        --highlight: #c4785a;
+        --highlight-soft: #d4956e;
+        --code-bg: #e8e4dd;
+        --border: #d4cfc7;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        background: var(--cream);
+        color: var(--teal-dark);
+        line-height: 1.7;
+        font-size: 1.15rem;
+      }
+
+      .container {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      header {
+        padding: 8rem 0 5rem;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 4rem;
+        font-weight: 600;
+        font-style: italic;
+        color: var(--teal);
+        letter-spacing: 0.02em;
+        margin-bottom: 1.5rem;
+      }
+
+      header .tagline {
+        font-size: 1.4rem;
+        font-style: italic;
+        color: var(--teal-light);
+        max-width: 540px;
+        margin: 0 auto;
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+
+      h2 {
+        font-size: 2rem;
+        font-style: italic;
+        font-weight: 600;
+        color: var(--teal);
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 1.25rem;
+        font-style: italic;
+      }
+
+      .highlight {
+        color: var(--highlight);
+        font-weight: 600;
+      }
+
+      pre {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.82rem;
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 1.5rem;
+        overflow-x: auto;
+        line-height: 1.6;
+        margin: 1.5rem 0;
+      }
+
+      code {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85em;
+        background: var(--code-bg);
+        padding: 0.15em 0.4em;
+        border-radius: 3px;
+      }
+
+      pre .comment {
+        color: #7a9a7a;
+      }
+      pre .cmd {
+        color: var(--highlight);
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 1.5rem;
+      }
+
+      .feature h3 {
+        font-size: 1.2rem;
+        font-style: italic;
+        font-weight: 600;
+        color: var(--teal);
+        margin-bottom: 0.4rem;
+      }
+
+      .feature p {
+        font-size: 1rem;
+        color: var(--teal-dark);
+      }
+
+      .divider {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 3rem 0;
+      }
+
+      .cta {
+        text-align: center;
+        padding: 4rem 0;
+      }
+
+      .cta a {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 1.2rem;
+        font-style: italic;
+        font-weight: 600;
+        color: var(--cream);
+        background: var(--teal);
+        padding: 0.8rem 2.5rem;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+
+      .cta a:hover {
+        background: var(--teal-dark);
+      }
+
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 2rem 0;
+        text-align: center;
+        font-style: italic;
+        color: var(--teal-light);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 2.5rem;
+        }
+        header {
+          padding: 5rem 0 3rem;
+        }
+        .features {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img
+          src="images/hero.png"
+          alt=""
+          style="max-width: 320px; margin-bottom: 2rem"
+        />
+        <h1>servitor</h1>
+        <p class="tagline">
+          single-binary framework for personal apps with a git data store
+        </p>
+      </header>
+
+      <section>
+        <p>You have built a personal app.</p>
+        <p>Where should you host it? Cloud? Datacenter? Home server? Maybe.</p>
+        <p>How about <b>git</b>!?</p>
+        <p>
+          <b>servitor</b> is a system for building and locally hosting apps with
+          the whole data layer being stored in git and automatically synced as
+          you work
+        </p>
+      </section>
+      <hr class="divider" />
+      <section>
+        <h2>how does it work?</h2>
+        <p>There is nothing novel about the tech.</p>
+
+        <p>
+          <b>servitor</b> is a single-binary Go app that reads a config file,
+          and serves static frontend content over a socket. For any API call it
+          uses a CGI-like interface to invoke the backend binary (can be Go or
+          anything else)
+        </p>
+
+        <p>
+          The backend is responsible for interacting with the data layer, which
+          lives in data/. The data format can be anything, git will eat it. Text
+          is preferred though. JSON, yaml, txt, csv, whatever fits your app.
+          It's <b>your app.</b>
+        </p>
+
+        <p>
+          The <b>servitor</b> app automatically commits and pushes changes to
+          git after a period of inactivity, or upon exit, whichever comes first.
+        </p>
+
+        <p>
+          There is no elaborate conflict resolution. <b>servitor</b> is intended
+          to be single-player. If you need multi-tenancy, this is not what
+          you're looking for.
+        </p>
+
+        <p>That's it!</p>
+      </section>
+      <section class="architecture">
+        <style>
+          .architecture .diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: nowrap;
+          }
+          .architecture .tier {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+          }
+          .architecture .tier img {
+            width: 72px;
+            height: 72px;
+          }
+          .architecture .tier span {
+            font-size: 0.85rem;
+            opacity: 0.7;
+          }
+          .architecture .arrow {
+            width: 56px;
+            height: 3px;
+            position: relative;
+            opacity: 0.6;
+            background: repeating-linear-gradient(
+              90deg,
+              currentColor 0 4px,
+              transparent 4px 10px
+            );
+            background-size: 200% 100%;
+            animation: crawl 0.8s linear infinite;
+          }
+          .architecture .arrow::after {
+            content: "";
+            position: absolute;
+            right: -1px;
+            top: -3px;
+            border: solid currentColor;
+            border-width: 0 2.5px 2.5px 0;
+            padding: 3.5px;
+            transform: rotate(-45deg);
+          }
+          @keyframes crawl {
+            from {
+              background-position-x: 0;
+            }
+            to {
+              background-position-x: 10px;
+            }
+          }
+          .architecture .arrow:nth-child(4) {
+            animation-delay: 0.2s;
+          }
+          .architecture .arrow:nth-child(6) {
+            animation-delay: 0.4s;
+          }
+        </style>
+        <div class="diagram">
+          <div class="tier">
+            <img src="images/user.png" alt="User" /><span>user</span>
+          </div>
+          <div class="arrow"></div>
+          <div class="tier">
+            <img src="images/frontend.png" alt="Frontend" /><span
+              >frontend</span
+            >
+          </div>
+          <div class="arrow"></div>
+          <div class="tier">
+            <img src="images/backend.png" alt="Backend" /><span>backend</span>
+          </div>
+          <div class="arrow"></div>
+          <div class="tier">
+            <img src="images/git.png" alt="Git" /><span>git</span>
+          </div>
+        </div>
+        <p
+          style="
+            text-align: center;
+            opacity: 0.6;
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+          "
+        >
+          Look, it's the three tiers!
+        </p>
+      </section>
+      <hr class="divider" />
+      <section>
+        <h2>why!?</h2>
+        <div class="features">
+          <div class="feature">
+            <h3>hosted (by someone else)</h3>
+            <p>
+              Someone is already taking care of hosting git for you. Depending
+              on your provider, this brings certain durability guarantees.
+            </p>
+          </div>
+          <div class="feature">
+            <h3>free PITR</h3>
+            <p>You get PITR - Point In Time Recovery! For free! Funny!</p>
+          </div>
+          <div class="feature">
+            <h3>readable data</h3>
+            <p>
+              It's just text, meaning you can look at your data through your git
+              web UI, in a pinch.
+            </p>
+          </div>
+          <div class="feature">
+            <h3>agent-friendly</h3>
+            <p>
+              The backend design is inspired by CGI, deliberately, to have
+              dual-use as a CLI tool for your agent.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>ok, fine. how?</h2>
+        <p>Simple:</p>
+        <pre><span class="comment"># download a template</span>
+<span class="cmd">servitor init</span> </pre>
+
+        <p>
+          After that you take the pre-built template and build your app using
+          your favourite coding method (agents welcome, we got SKILL.mds).
+        </p>
+        <p>And then:</p>
+
+        <pre><span class="comment"># host it</span>
+<span class="cmd">servitor</span>
+<span class="comment"># hell, put that into systemd! go nuts!</span></pre>
+
+        <h2>this is your app</h2>
+        <pre><span class="cmd">my-app/
+├── .servitor.conf
+├── frontend/
+│   └── index.html
+├── backend/
+│   └── servitor-backend
+├── data/
+└── .git/</span></pre>
+      </section>
+
+      and this is its config:
+
+      <pre><span class="cmd">server:
+  port: 8080
+  host: 127.0.0.1
+
+frontend:
+  path: ./frontend
+
+backend:
+  path: ./backend/servitor-backend
+  api_prefix: /api
+  timeout: 3s
+
+sync:
+  enabled: true
+  inactivity_delay: 30s
+  max_interval: 5m
+</span></pre>
+
+      <h2>"i have multiple apps"</h2>
+
+      Yeah, me too. servitor supports that as well. Your multiple apps share a
+      common configuration telling the servitor binary how to host them.
+      Nesting, baby!
+      <br />
+
+      And now, this is your config:
+
+      <pre><span class="cmd">server:
+  port: 8080
+  host: 127.0.0.1
+
+apps:
+  - name: notes
+    path: ./apps/notes
+  - name: wiki
+    path: ./apps/wiki
+</span></pre>
+
+      <h2>what about my agents?</h2>
+
+      Well, the backend API is served through a CGI-like interface. That means
+      that you can teach your agent to invoke it and interact with your data.
+      <br />
+      Give your agent a SKILL.md to tell it how to invoke the backend, point it
+      to the API documentation, and you're off to the races!
+
+      <hr class="divider" />
+
+      <section>
+        <h2>get it? get it:</h2>
+      </section>
+      <section class="cta">
+        <a href="https://github.com/svetozarm/servitor">PLACEHOLDER_CTA_TEXT</a>
+      </section>
+    </div>
+
+    <footer>
+      <div class="container">
+        Built by Svetozar Miučin, for Svetozar Miučin. And you <3
+      </div>
+      <div class="container">aggressively open source</div>
+    </footer>
+  </body>
+</html>
